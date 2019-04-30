@@ -10,7 +10,7 @@
 // 如果两个字符串中出现的字符
 // 种类一样且每种字符出现的次数也一样，
 // 那么str1和str2互为变形词
-public class IsDeformation {
+public class isDeformation {
     public static boolean isDeformation(String str1,String str2){
         if(str1 == null || str2 == null || str1.length() != str2.length()){
             return false;
