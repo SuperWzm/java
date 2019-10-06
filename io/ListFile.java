@@ -1,6 +1,7 @@
 package IO;
 
 import java.io.File;
+import java.io.FileOutputStream;
 
 /**
  * Created with IntelliJ IDEA.
@@ -11,17 +12,20 @@ import java.io.File;
  **/
 public class ListFile {
     public static void main(String[] args) {
-        File file = new File("E:\\WebProjects");
-        if(!file.exists()){
-            System.out.println("目录不存在");
-            return ;
-        }
-        File[] list = file.listFiles();
-        for (int i = 0; i < list.length; i++) {
-            if(list[i].isDirectory()){
-                System.out.println("Directory:" + list[i].getName());
-            }else {
-                System.out.println("File:" + list[i].getName());
+         showFile(new File("E:\\WebProjects"),1);
+    }
+
+    public static void showFile(File f,int leval){
+        File[] files = f.listFiles();
+        for(File file : files){
+            //通过这个leval在前面加 -
+            for (int i = 0; i < leval; i++) {
+                System.out.print("- ");
+            }
+            System.out.println(file.getName());
+            if(file.isDirectory()) {
+                //向下继续进行遍历查看
+                showFile(file, leval + 1);
             }
         }
     }
